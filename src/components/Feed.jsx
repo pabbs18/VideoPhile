@@ -10,7 +10,9 @@ const Feed = () => {
   const[videos, setVideos] = useState([]);
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-    .then((data) => setVideos(data.items))
+    .then((data) => {
+      console.log(data)
+      setVideos(data.items)})
   }, [selectedCategory])
 
   return (
@@ -22,7 +24,7 @@ const Feed = () => {
       </Box>
 
       {/* VIDEOS FEED */}
-      <Box p={2} backgroundColor='grey' sx={{overflow:'auto', height:'90vh', flex: 2}}>
+      <Box p={2} backgroundColor='#000' sx={{overflow:'auto', height:'90vh', flex: 2}}>
         <Typography variant="h4" fontWeight="bold" mb={2} sx={{ color:'white'}}>
           {selectedCategory} <span style ={{color: '#F31503'}}>videos</span>
         </Typography>
