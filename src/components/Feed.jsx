@@ -19,14 +19,14 @@ const Feed = () => {
     <Stack direction={{xs:'column', md: 'row' }}>
 
       {/* SIDEBAR */}
-      <Box height={{xs:'auto', md:'90vh'}} sx = {{ borderRight:'1px solid #3d3d3d', px:{xs:0, md:2}, }}>
+      <Box  height={{xs:'auto', md:'90vh'}} sx = {{ borderRight:'1px #3d3d3d', px:{xs:0, md:4}, }}>
         <SideBar  selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
       </Box>
 
       {/* VIDEOS FEED */}
-      <Box p={2} backgroundColor='#000' sx={{overflow:'auto', height:'90vh', flex: 2}}>
+      <Box p={2} ml= '1%'  sx={{overflow:'auto', height:'90vh', flex: 2}}>
         <Typography variant="h4" fontWeight="bold" mb={2} sx={{ color:'white'}}>
-          {selectedCategory} <span style ={{color: '#F31503'}}>videos</span>
+         <span style ={{color: '#F31503'}}> {selectedCategory}  videos</span>
         </Typography>
         <Videos videos={videos}/>
       </Box> 

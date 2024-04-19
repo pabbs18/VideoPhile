@@ -8,11 +8,18 @@ import { fetchFromAPI } from "../utils/fetchFromApi";
 
 const VideoDetail = () => {
   const [video, setVideo] = useState(null);
+  const [sideVideos, setSideVideos] = useState(null);
+
   const {id} = useParams();
 
   useEffect(() =>{
      fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
      .then((data)=> setVideo(data.items[0]))
+
+     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+     .then((data)=>setSideVideos(data.items))
+
+     console.log("sidevideos: ",sideVideos)
   }, [id])
 
   //de-structre the video global variabe
@@ -20,7 +27,7 @@ const VideoDetail = () => {
 
   return (
   <Box minHeight='95vh' >
-    <Stack  direction={{xs:'column', md:'row'}}>
+    <Stack  direction={{xs:'column', md:'row'}} spacing={1}>
       <Box flex={1} >
         <Box sx={{width:'100%', position:'sticky', top:'86px', p:2}}>
           <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`}
@@ -45,10 +52,12 @@ const VideoDetail = () => {
             </Stack>
 
           </Stack>
-        </Box>
-        
+        </Box>        
       </Box>
-    </Stack>
+      <Box px={2} py={{md:3, xs:5}} justifyContent='center' alignItems='center'>      
+      <Videos videos={sideVideos} direction='column'/>
+    </Box>
+    </Stack>   
   </Box>
   );
 };

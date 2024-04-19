@@ -28,8 +28,8 @@ useEffect(() =>{
         <div style={{background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(98,234,134,1) 35%, rgba(0,212,255,1) 100%)' ,zIndex:10, height:'300px'}}/>
         <ChannelCard channel={channel} marginTop ='-130px'/>
       </Box>
-      <Box backgroundColor='blue' display='flex' p='2'>
-        <Box backgroundColor='red' sx={{mr:{sm:'40px'}, ml:{sm:'40px'}}}>
+      <Box  display='flex' p='2'>
+        <Box  sx={{mr:{sm:'40px'}, ml:{sm:'40px'}}}>
           <Videos videos={videos}/>
         </Box>
       </Box>
